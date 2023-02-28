@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdAdd, IoMdClose } from "react-icons/io";
-import { BsArrowBarLeft } from "react-icons/bs";
+import { BsArrowBarLeft, BsMoonFill, BsFillSunFill } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 interface ChatButton {
@@ -13,8 +13,8 @@ interface ChatButton {
 const ChatButton = ({ title, icon, onClick }: ChatButton) => {
   return (
     <button
-      onClick={() => onClick}
-      className="flex w-full items-center space-x-3 rounded-lg p-2 text-left text-base font-normal capitalize text-grey outline-none hover:bg-light lg:text-lg"
+      onClick={onClick}
+      className="flex w-full items-center space-x-3 rounded-lg p-2 text-left text-base font-normal capitalize text-grey-100 outline-none hover:bg-blue dark:hover:bg-blue lg:text-lg"
     >
       {icon}
       <span>{title}</span>
@@ -24,10 +24,22 @@ const ChatButton = ({ title, icon, onClick }: ChatButton) => {
 
 const Aside = () => {
   const [show, setShow] = useState(false);
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    theme === "dark"
+      ? document.documentElement.classList.add("dark")
+      : document.documentElement.classList.remove("dark");
+  }, [theme]);
+
+  const switchTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   return (
     <aside
       className={`${
-        show ? "fixed top-0 left-0 z-50 w-64" : "relative lg:w-72 xl:w-96"
+        show ? "fixed top-0 left-0 z-50 w-64" : "relative lg:w-56 xl:w-96"
       } h-full min-h-screen w-0 bg-black`}
     >
       <div
@@ -38,38 +50,48 @@ const Aside = () => {
         <button
           onClick={() => (show ? setShow(false) : setShow(true))}
           className={`flex items-center justify-center ${
-            show ? "bg-slate-800" : "hover:bg-slate-800"
-          } rounded-full p-1.5 focus:bg-slate-800`}
+            show ? "bg-slate-800" : "hover:bg-slate-200 dark:hover:bg-slate-800"
+          } rounded-full p-1.5 focus:bg-slate-200 dark:focus:bg-slate-800`}
         >
           {show ? (
-            <IoMdClose fontSize={22} color="#dbdbe2" />
+            <IoMdClose fontSize={22} className="text-blue dark:text-grey-100" />
           ) : (
-            <RxHamburgerMenu fontSize={26} color="#dbdbe2" />
+            <RxHamburgerMenu
+              fontSize={26}
+              className="text-blue dark:text-grey-100"
+            />
           )}
         </button>
       </div>
-      <div className="absolute top-0 left-0 w-full p-3">
-        <button className="flex w-full items-center space-x-3 rounded-lg border-2 border-dark p-2 text-left text-base font-normal capitalize text-grey outline-none hover:border-blue hover:bg-slate-800 focus:border-blue focus:bg-slate-800 lg:text-lg">
-          <IoMdAdd fontSize={18} color="#dbdbe2" />
-          <span>New Chat</span>
-        </button>
-      </div>
-      <div className="absolute bottom-0 left-0 w-full border-t border-dark p-3">
-        <ChatButton
-          icon={<BsArrowBarLeft fontSize={20} color="#dbdbe2" />}
-          title="Log Out"
-          onClick={() => console.log("chatButton")}
-        />
-        <ChatButton
-          icon={<BsArrowBarLeft fontSize={20} color="#dbdbe2" />}
-          title="Light Mode"
-          onClick={() => console.log("chatButton")}
-        />
-        <ChatButton
-          icon={<BsArrowBarLeft fontSize={20} color="#dbdbe2" />}
-          title="Log Out"
-          onClick={() => console.log("chatButton")}
-        />
+      <div className={`${show ? "block md:hidden" : "hidden md:block"}`}>
+        <div
+          className={`${
+            show ? "absolute" : "relative"
+          } top-0 left-0 w-full p-3`}
+        >
+          <button className="flex w-full items-center space-x-3 rounded-lg border-2 border-light p-2 text-left text-base font-normal capitalize text-grey-100 outline-none hover:border-blue hover:bg-slate-800 focus:border-blue focus:bg-slate-800 lg:text-lg">
+            <IoMdAdd fontSize={18} color="#dbdbe2" />
+            <span>New Chat</span>
+          </button>
+        </div>
+        <div className="absolute bottom-0 left-0 flex w-full flex-col items-center justify-center space-y-1 border-t border-light p-3 xl:space-y-2">
+          <ChatButton
+            icon={
+              theme === "dark" ? (
+                <BsMoonFill fontSize={23} color="#dbdbe2" />
+              ) : (
+                <BsFillSunFill fontSize={23} color="#dbdbe2" />
+              )
+            }
+            title={`${theme} Mode`}
+            onClick={switchTheme}
+          />
+          <ChatButton
+            icon={<BsArrowBarLeft fontSize={20} color="#dbdbe2" />}
+            title="Log Out"
+            onClick={() => console.log("chatButton")}
+          />
+        </div>
       </div>
     </aside>
   );

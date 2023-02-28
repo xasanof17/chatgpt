@@ -1,10 +1,13 @@
+import * as React from "react";
+
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin", "cyrillic"],
-  display: "swap",
+  display: "auto",
 });
 
 export const metadata = {
@@ -19,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body className="overflow-hidden min-h-screen h-full">{children}</body>
+      <body className="h-full min-h-screen overflow-hidden bg-white dark:bg-black">{children}</body>
     </html>
   );
 }

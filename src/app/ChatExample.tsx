@@ -41,9 +41,9 @@ const Box = ({ item, id }: Box) => {
   return (
     <div
       key={id}
-      className="w-full rounded-lg bg-dark p-2 hover:cursor-pointer"
+      className="w-full rounded-lg bg-dark-200 p-2 hover:cursor-pointer dark:bg-dark-100"
     >
-      <p className="text-center text-base font-medium text-grey lg:text-lg">
+      <p className="text-center text-base font-medium text-grey-200 dark:text-grey-100 lg:text-lg">
         {item.text}
       </p>
     </div>
@@ -53,12 +53,14 @@ const Box = ({ item, id }: Box) => {
 const ChatExample = () => {
   return (
     <section className="absolute top-16 flex w-full flex-col items-center justify-center space-y-12">
-      <h1 className="text-3xl font-bold text-grey lg:text-4xl">ChatGPT</h1>
-      <div className="mx-auto grid w-full grid-cols-3 gap-4 lg:max-w-6xl">
+      <h1 className="text-3xl font-bold text-grey-200 dark:text-grey-100 lg:text-4xl">
+        ChatGPT
+      </h1>
+      <div className="mx-auto grid w-full grid-cols-3 gap-4 lg:max-w-6xl overflow-x-scroll">
         <div className="block">
           <div className="flex flex-col items-center justify-center space-y-4">
-            <BiSun fontSize={29} className="text-grey" />
-            <h2 className="text-lg font-semibold capitalize text-grey lg:text-2xl">
+            <BiSun fontSize={29} className="text-grey-200 dark:text-grey-100" />
+            <h2 className="text-lg font-semibold capitalize text-grey-200 dark:text-grey-100 xl:text-2xl">
               Examples
             </h2>
             {examples.map((item) => (
@@ -68,8 +70,11 @@ const ChatExample = () => {
         </div>
         <div className="block">
           <div className="flex flex-col items-center justify-center space-y-4">
-            <SlEnergy fontSize={29} className="text-grey" />
-            <h2 className="text-lg font-medium capitalize text-grey lg:text-2xl">
+            <SlEnergy
+              fontSize={29}
+              className="text-grey-200 dark:text-grey-100"
+            />
+            <h2 className="text-lg font-medium capitalize text-grey-200 dark:text-grey-100 xl:text-2xl">
               Capabilities
             </h2>
             {capabilities.map((item) => (
@@ -79,8 +84,11 @@ const ChatExample = () => {
         </div>
         <div className="block">
           <div className="flex flex-col items-center justify-center space-y-4">
-            <IoWarningOutline fontSize={27} className="text-grey" />
-            <h2 className="text-lg font-medium capitalize text-grey lg:text-2xl">
+            <IoWarningOutline
+              fontSize={27}
+              className="text-grey-200 dark:text-grey-100"
+            />
+            <h2 className="text-lg font-medium capitalize text-grey-200 dark:text-grey-100 xl:text-2xl">
               Limitations
             </h2>
             {limitations.map((item) => (
