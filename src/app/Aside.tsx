@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { IoMdAdd } from "react-icons/io";
+import { IoMdAdd, IoMdClose } from "react-icons/io";
 import { BsArrowBarLeft } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 
@@ -16,10 +16,27 @@ const ButtonChat = () => {
 const Aside = () => {
   const [show, setShow] = useState(false);
   return (
-    <aside className="lg:w-72 w-0 bg-black h-full min-h-screen relative">
-      <div className="lg:hidden flex items-center justify-center fixed top-5 left-3 z-50">
-        <button>
-          <RxHamburgerMenu fontSize={28} color="#dbdbe2" />
+    <aside
+      className={`${
+        show ? "w-64 fixed top-0 left-0 z-50" : "lg:w-72 relative"
+      } w-0 bg-black h-full min-h-screen`}
+    >
+      <div
+        className={`${
+          show ? "right-3" : "lg:hidden left-3"
+        } flex items-center justify-center fixed top-3 z-50`}
+      >
+        <button
+          onClick={() => (show ? setShow(false) : setShow(true))}
+          className={`flex items-center justify-center ${
+            show ? "bg-slate-800" : "hover:bg-slate-800"
+          } p-1.5 rounded-full focus:bg-slate-800`}
+        >
+          {show ? (
+            <IoMdClose fontSize={22} color="#dbdbe2" />
+          ) : (
+            <RxHamburgerMenu fontSize={26} color="#dbdbe2" />
+          )}
         </button>
       </div>
       <div className="absolute top-0 left-0 w-full p-3">

@@ -4,7 +4,7 @@ import { IoSend } from "react-icons/io5";
 const Send = () => {
   return (
     <div className="absolute bottom-4 left-0 w-full">
-      <form className="mx-1 sm:mx-5 flex space-x-1 items-center">
+      <form className="ml-2 sm:mx-5 flex space-x-1 items-center">
         <textarea
           rows={1}
           autoFocus
@@ -14,7 +14,7 @@ const Send = () => {
         />
         <button
           type="submit"
-          className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-slate-800 focus:outline-blue focus:bg-slate-800 focus:outline"
+          className="flex items-center justify-center p-1 sm:p-2 rounded-full cursor-pointer hover:bg-slate-800 focus:outline-blue focus:bg-slate-800 focus:outline"
         >
           <IoSend fontSize={22} className="text-blue" />
         </button>
