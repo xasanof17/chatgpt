@@ -5,7 +5,7 @@ import Send from "./Send";
 
 const Chat = () => {
   return (
-    <section className="bg-black w-full min-h-screen h-full p-3 relative border-l border-dark">
+    <section className="relative h-full min-h-screen w-full border-l border-dark bg-black p-3">
       <ChatExample />
       {/* <div className="overflow-y-auto overflow-hidden absolute top-0 left-0 right-2 bg-dark p-3 w-full h-full">
         <ChatBox />

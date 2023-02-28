@@ -3,18 +3,18 @@ import { IoSend } from "react-icons/io5";
 
 const Send = () => {
   return (
-    <div className="absolute bottom-4 left-0 w-full">
-      <form className="ml-2 sm:mx-5 flex space-x-1 items-center">
+    <div className="absolute bottom-5 left-0 w-full bg-black p-3 xl:bottom-12 xl:p-5">
+      <form className="mx-5 ml-2 flex items-center space-x-1 sm:ml-0 lg:mx-auto xl:max-w-6xl">
         <textarea
           rows={1}
           autoFocus
           placeholder="Ask anything..."
           name="message"
-          className="rounded-md resize-none shadow-xl text-grey block p-2 w-full text-[16px] bg-dark outline-none border-2 border-transparent focus:ring-blue focus:bg-light focus:border-blue"
+          className="block w-full resize-none rounded-md border-2 border-transparent bg-dark p-2 text-base text-grey shadow-xl outline-none focus:border-blue focus:bg-light focus:ring-blue lg:text-lg"
         />
         <button
           type="submit"
-          className="flex items-center justify-center p-1 sm:p-2 rounded-full cursor-pointer hover:bg-slate-800 focus:outline-blue focus:bg-slate-800 focus:outline"
+          className="flex cursor-pointer items-center justify-center rounded-full p-1 outline-none hover:bg-slate-800 focus:border focus:border-light focus:bg-slate-800 lg:p-3"
         >
           <IoSend fontSize={22} className="text-blue" />
         </button>

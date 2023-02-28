@@ -12,12 +12,11 @@
   }
   *::-webkit-scrollbar-thumb {
     background-color: #334eff;
-    /* border-radius: 15px; */
   }
 }
 
-@layer components {
-  .bg-transparent {
-    background-color: transparent;
+/* @media (prefers-color-scheme: dark) {
+  @layer utilities {
+    @apply
   }
-}
+} */
