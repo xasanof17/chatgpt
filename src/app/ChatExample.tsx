@@ -43,7 +43,7 @@ const Box = ({ item, id }: Box) => {
       key={id}
       className="w-full rounded-lg bg-dark-200 p-2 hover:cursor-pointer dark:bg-dark-100"
     >
-      <p className="text-center text-base font-medium text-grey-200 dark:text-grey-100 lg:text-lg">
+      <p className="text-center text-base font-medium text-grey-200 dark:text-grey-100 xl:text-lg">
         {item.text}
       </p>
     </div>
@@ -52,11 +52,11 @@ const Box = ({ item, id }: Box) => {
 
 const ChatExample = () => {
   return (
-    <section className="absolute top-16 flex  2xl:max-w-6xl xl:max-w-3xl r-5  flex-col items-center justify-center space-y-12">
+    <section className="absolute top-16 pb-[20%] sm:pb-0 left-3 right-3 flex flex-col items-center justify-center space-y-12 lg:right-auto  lg:left-[5%] xl:left-[10%] xl:max-w-4xl 2xl:max-w-6xl">
       <h1 className="text-3xl font-bold text-grey-200 dark:text-grey-100 lg:text-4xl">
         ChatGPT
       </h1>
-      <div className="mx-auto grid w-full grid-cols-3 gap-4 overflow-x-scroll">
+      <div className="mx-auto grid w-full grid-cols-1 gap-4 overflow-x-auto sm:overflow-x-auto md:grid-cols-3">
         <div className="block">
           <div className="flex flex-col items-center justify-center space-y-4">
             <BiSun fontSize={29} className="text-grey-200 dark:text-grey-100" />

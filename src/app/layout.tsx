@@ -44,7 +44,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body className="h-full min-h-screen overflow-hidden bg-white dark:bg-black">
+      <body className="h-full min-h-screen relative bg-white dark:bg-black">
         {children}
       </body>
     </html>

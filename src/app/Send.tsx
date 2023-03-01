@@ -3,8 +3,8 @@ import { IoSend } from "react-icons/io5";
 
 const Send = () => {
   return (
-    <div className="absolute bottom-5 left-0 w-full bg-white p-3 dark:bg-black xl:bottom-12 xl:p-5">
-      <form className=" flex items-center space-x-1 sm:ml-0 lg:mx-auto xl:max-w-6xl">
+    <div className="fixed sm:absolute bottom-0 left-0 w-full bg-white p-2 md:p-3 dark:bg-black 2xl:bottom-12 xl:p-5">
+      <form className="flex items-center space-x-1 sm:ml-0 lg:mx-auto xl:max-w-6xl">
         <input
           type="text"
           name="message"

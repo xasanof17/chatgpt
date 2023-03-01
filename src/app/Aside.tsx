@@ -37,11 +37,7 @@ const Aside = () => {
   };
 
   return (
-    <aside
-      className={`${
-        show ? "fixed top-0 left-0 z-50 w-64" : "relative lg:w-72 2xl:w-96"
-      } h-full min-h-screen w-0 bg-black`}
-    >
+    <div className="aside">
       <div
         className={`${
           show ? "right-3" : "left-3 lg:hidden"
@@ -50,7 +46,9 @@ const Aside = () => {
         <button
           onClick={() => (show ? setShow(false) : setShow(true))}
           className={`flex items-center justify-center ${
-            show ? "bg-slate-800" : "hover:bg-slate-200 dark:hover:bg-slate-800"
+            show
+              ? "bg-slate-200 dark:bg-slate-700"
+              : "bg-slate-200 hover:bg-slate-400 dark:bg-blue dark:hover:bg-slate-800"
           } rounded-full p-1.5 focus:bg-slate-200 dark:focus:bg-slate-800`}
         >
           {show ? (
@@ -63,37 +61,43 @@ const Aside = () => {
           )}
         </button>
       </div>
-      <div className={`${show ? "block md:hidden" : "hidden md:block"}`}>
-        <div
-          className={`${
-            show ? "absolute" : "relative"
-          } top-0 left-0 w-full p-3`}
-        >
-          <button className="flex w-full items-center space-x-3 rounded-lg border-2 border-light p-2 text-left text-base font-normal capitalize text-grey-100 outline-none hover:border-blue hover:bg-slate-800 focus:border-blue focus:bg-slate-800 lg:text-lg">
-            <IoMdAdd fontSize={18} color="#dbdbe2" />
-            <span>New Chat</span>
-          </button>
+      <aside
+        className={`${
+          show ? "fixed z-40 block" : "relative hidden lg:block"
+        } ${"w-3/4 md:w-72 2xl:w-96"} h-full min-h-screen w-0 bg-black`}
+      >
+        <div className={`${show ? "block" : "hidden md:block"}`}>
+          <div
+            className={`${
+              show ? "absolute" : "relative"
+            } top-0 left-0 w-full p-3`}
+          >
+            <button className="flex w-full items-center space-x-3 rounded-lg border-2 border-light p-2 text-left text-base font-normal capitalize text-grey-100 outline-none hover:border-blue hover:bg-slate-800 focus:border-blue focus:bg-slate-800 lg:text-lg">
+              <IoMdAdd fontSize={18} color="#dbdbe2" />
+              <span>New Chat</span>
+            </button>
+          </div>
+          <div className="absolute bottom-0 left-0 flex w-full flex-col items-center justify-center space-y-1 border-t border-light p-3 xl:space-y-2">
+            <ChatButton
+              icon={
+                theme === "dark" ? (
+                  <BsMoonFill fontSize={23} color="#dbdbe2" />
+                ) : (
+                  <BsFillSunFill fontSize={23} color="#dbdbe2" />
+                )
+              }
+              title={`${theme} Mode`}
+              onClick={switchTheme}
+            />
+            <ChatButton
+              icon={<BsArrowBarLeft fontSize={20} color="#dbdbe2" />}
+              title="Log Out"
+              onClick={() => console.log("chatButton")}
+            />
+          </div>
         </div>
-        <div className="absolute bottom-0 left-0 flex w-full flex-col items-center justify-center space-y-1 border-t border-light p-3 xl:space-y-2">
-          <ChatButton
-            icon={
-              theme === "dark" ? (
-                <BsMoonFill fontSize={23} color="#dbdbe2" />
-              ) : (
-                <BsFillSunFill fontSize={23} color="#dbdbe2" />
-              )
-            }
-            title={`${theme} Mode`}
-            onClick={switchTheme}
-          />
-          <ChatButton
-            icon={<BsArrowBarLeft fontSize={20} color="#dbdbe2" />}
-            title="Log Out"
-            onClick={() => console.log("chatButton")}
-          />
-        </div>
-      </div>
-    </aside>
+      </aside>
+    </div>
   );
 };
 
