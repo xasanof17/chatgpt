@@ -52,11 +52,11 @@ const Box = ({ item, id }: Box) => {
 
 const ChatExample = () => {
   return (
-    <section className="absolute top-16 flex w-full flex-col items-center justify-center space-y-12">
+    <section className="absolute top-16 flex  2xl:max-w-6xl xl:max-w-3xl r-5  flex-col items-center justify-center space-y-12">
       <h1 className="text-3xl font-bold text-grey-200 dark:text-grey-100 lg:text-4xl">
         ChatGPT
       </h1>
-      <div className="mx-auto grid w-full grid-cols-3 gap-4 lg:max-w-6xl overflow-x-scroll">
+      <div className="mx-auto grid w-full grid-cols-3 gap-4 overflow-x-scroll">
         <div className="block">
           <div className="flex flex-col items-center justify-center space-y-4">
             <BiSun fontSize={29} className="text-grey-200 dark:text-grey-100" />

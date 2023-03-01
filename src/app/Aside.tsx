@@ -39,7 +39,7 @@ const Aside = () => {
   return (
     <aside
       className={`${
-        show ? "fixed top-0 left-0 z-50 w-64" : "relative lg:w-56 xl:w-96"
+        show ? "fixed top-0 left-0 z-50 w-64" : "relative lg:w-72 2xl:w-96"
       } h-full min-h-screen w-0 bg-black`}
     >
       <div
