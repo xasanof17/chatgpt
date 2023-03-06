@@ -44,6 +44,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const session = await getServerSession(authOptions);
+
   return (
     <html lang="en" className={inter.className}>
       <body className="relative h-full min-h-screen bg-white dark:bg-black">

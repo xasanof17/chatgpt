@@ -1,22 +1,22 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { IoMdAdd, IoMdClose } from "react-icons/io";
-import { BsArrowBarLeft, BsMoonFill, BsFillSunFill } from "react-icons/bs";
+import { BsMoonFill, BsFillSunFill } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { useSession, signOut } from "next-auth/react";
+import Image from "next/image";
+import openai from "../assets/openai-icon.svg";
 
 interface ChatButton {
   title: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   onClick: () => void;
 }
 
 const ChatButton = ({ title, icon, onClick }: ChatButton) => {
   return (
-    <button
-      onClick={onClick}
-      className="flex w-full items-center space-x-3 rounded-lg p-2 text-left text-base font-normal capitalize text-grey-100 outline-none hover:bg-blue dark:hover:bg-blue lg:text-lg"
-    >
-      {icon}
+    <button onClick={onClick} className="sideBarButton">
+      {icon && icon}
       <span>{title}</span>
     </button>
   );
@@ -25,6 +25,7 @@ const ChatButton = ({ title, icon, onClick }: ChatButton) => {
 const Aside = () => {
   const [show, setShow] = useState(false);
   const [theme, setTheme] = useState("light");
+  const { data: session } = useSession();
 
   useEffect(() => {
     theme === "dark"
@@ -77,7 +78,7 @@ const Aside = () => {
               <span>New Chat</span>
             </button>
           </div>
-          <div className="absolute left-0 bottom-0 flex w-full flex-col items-center justify-center space-y-1 border-t border-light p-3 xl:space-y-2">
+          <div className="absolute left-0 bottom-0 flex w-full flex-col items-center justify-center space-y-2 border-t border-light p-3 xl:space-y-2">
             <ChatButton
               icon={
                 theme === "dark" ? (
@@ -89,11 +90,19 @@ const Aside = () => {
               title={`${theme} Mode`}
               onClick={switchTheme}
             />
-            <ChatButton
-              icon={<BsArrowBarLeft fontSize={20} color="#dbdbe2" />}
-              title="Log Out"
-              onClick={() => console.log("chatButton")}
-            />
+
+            {session && (
+              <button onClick={() => signOut()} className="sideBarButton p-1">
+                <Image
+                  src={session?.user?.image || openai}
+                  alt="user"
+                  width={30}
+                  height={30}
+                  className="rounded-full"
+                />
+                <p>Log out</p>
+              </button>
+            )}
           </div>
         </div>
       </aside>

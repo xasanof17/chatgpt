@@ -15,8 +15,8 @@
   }
 }
 
-/* @media (prefers-color-scheme: dark) {
-  @layer utilities {
-    @apply
+@layer components {
+  .sideBarButton {
+    @apply flex w-full items-center space-x-3 rounded-lg p-2 text-left text-base font-normal capitalize text-grey-100 outline-none hover:bg-blue dark:hover:bg-blue lg:text-lg;
   }
-} */
+}
