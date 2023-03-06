@@ -1,8 +1,9 @@
 import * as React from "react";
-
+import { getServerSession } from "next-auth";
+import { authOptions } from "pages/api/auth/[...nextauth]";
+import { Login, SessionProvider } from "components";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import Head from "next/head";
+import "../styles/globals.css";
 
 const inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
@@ -32,20 +33,23 @@ export const metadata = {
   openGraph: {
     description: "ChatGPT is online website to ask anything",
     emails: ["javokhirdev@mail.com", "xasanof17@gmail.com"],
-    phoneNumbers: ['998900198505'],
-    publishedTime: '01.03.,'
+    phoneNumbers: ["998900198505"],
+    publishedTime: "01.03.,",
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession(authOptions);
   return (
     <html lang="en" className={inter.className}>
-      <body className="h-full min-h-screen relative bg-white dark:bg-black">
-        {children}
+      <body className="relative h-full min-h-screen bg-white dark:bg-black">
+        <SessionProvider session={session}>
+          {!session ? <Login /> : children}
+        </SessionProvider>
       </body>
     </html>
   );

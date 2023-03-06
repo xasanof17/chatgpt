@@ -1,5 +1,4 @@
-import Aside from "./Aside";
-import Chat from "./Chat";
+import {Aside, Chat} from "../components";
 
 export default function Home() {
   return (

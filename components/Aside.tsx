@@ -64,7 +64,7 @@ const Aside = () => {
       <aside
         className={`${
           show ? "fixed z-40 block" : "relative hidden lg:block"
-        } ${"w-3/4 md:w-72 2xl:w-96"} h-full min-h-screen w-0 bg-black`}
+        } ${"w-3/4 md:w-72 2xl:w-96"} h-full min-h-screen w-0 overflow-y-auto bg-black`}
       >
         <div className={`${show ? "block" : "hidden md:block"}`}>
           <div
@@ -72,12 +72,12 @@ const Aside = () => {
               show ? "absolute" : "relative"
             } top-0 left-0 w-full p-3`}
           >
-            <button className="flex w-full items-center space-x-3 rounded-lg border-2 border-light p-2 text-left text-base font-normal capitalize text-grey-100 outline-none hover:border-blue hover:bg-slate-800 focus:border-blue focus:bg-slate-800 lg:text-lg">
+            <button className="flex w-full items-center space-x-3 rounded-lg border-2 border-light p-2 text-left text-base font-normal capitalize text-grey-100 outline-none transition-all ease-out hover:border-blue hover:bg-slate-800 focus:border-blue focus:bg-slate-800 lg:text-lg">
               <IoMdAdd fontSize={18} color="#dbdbe2" />
               <span>New Chat</span>
             </button>
           </div>
-          <div className="absolute bottom-0 left-0 flex w-full flex-col items-center justify-center space-y-1 border-t border-light p-3 xl:space-y-2">
+          <div className="absolute left-0 bottom-0 flex w-full flex-col items-center justify-center space-y-1 border-t border-light p-3 xl:space-y-2">
             <ChatButton
               icon={
                 theme === "dark" ? (
