@@ -1,10 +1,14 @@
 import Layout from "components/Layout";
 import { Chat } from "../components";
 
-export default function Home() {
+interface Props {
+  chatId: string;
+}
+
+export default function Home({ chatId }: Props) {
   return (
     <Layout>
-      <Chat />
+      <Chat chatId={chatId} />
     </Layout>
   );
 }

@@ -34,7 +34,7 @@ export const metadata = {
     description: "ChatGPT is online website to ask anything",
     emails: ["javokhirdev@mail.com", "xasanof17@gmail.com"],
     phoneNumbers: ["998900198505"],
-    publishedTime: "01.03.,",
+    publishedTime: "01.03.2023,",
   },
 };
 
