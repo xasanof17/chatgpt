@@ -20,7 +20,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <section className="relative flex h-screen flex-col items-center justify-center dark:bg-black bg-slate-700">
+    <section className="relative flex h-screen flex-col items-center justify-center bg-black dark:bg-black">
       <button
         onClick={() => router.replace("/")}
         className="fixed top-6 left-4 flex animate-bounce items-center space-x-3 rounded-lg bg-white p-3 font-medium"
@@ -29,14 +29,11 @@ export default function Error({
         <p>Home</p>
       </button>
       <Image src={openai} alt="logo" width={100} height={100} />
-      <h2 className="my-5 text-4xl font-normal text-grey-100">
+      <h2 className="my-5 text-2xl font-normal text-grey-100 sm:text-4xl">
         Something went wrong!
       </h2>
       <button
-        onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => reset()
-        }
+        onClick={() => router.refresh()}
         className="rounded-lg border-blue bg-white py-2 px-5 text-lg font-semibold text-gray-700"
       >
         Try again

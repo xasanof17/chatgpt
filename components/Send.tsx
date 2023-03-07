@@ -69,7 +69,7 @@ const Send = ({ chatId }: Props) => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-white p-2 dark:bg-black sm:absolute md:p-3 xl:p-5 2xl:bottom-12">
+    <div className="fixed bottom-[0.1%] sm:bottom-0 left-0 w-full bg-white p-2 dark:bg-black sm:absolute md:p-3 xl:p-5 2xl:bottom-12">
       <form
         onSubmit={sendMessage}
         className="flex items-center space-x-1 pb-2 sm:ml-0 sm:pb-0 lg:mx-auto xl:max-w-6xl"

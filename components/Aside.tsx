@@ -96,10 +96,12 @@ const Aside = () => {
       </div>
       <aside
         className={`${
-          show ? "fixed z-40 block" : "relative hidden lg:block"
-        } ${"w-3/4 md:w-72 2xl:w-96"} h-full min-h-screen w-0 overflow-y-auto bg-black`}
+          show ? "fixed z-40 block" : "hidden lg:block"
+        } h-full min-h-screen w-4/5 overflow-y-auto bg-black sm:w-3/4 md:w-72 2xl:w-96`}
       >
-        <div className={`${show ? "block" : "hidden md:block"}`}>
+        <div
+          className={`${show ? "block" : "hidden md:block"} relative h-full`}
+        >
           <div
             className={`${
               show ? "absolute" : "relative"
@@ -120,7 +122,7 @@ const Aside = () => {
               </div>
             </div>
           </div>
-          <div className="absolute left-0 bottom-0 flex w-full flex-col items-center justify-center space-y-2 border-t border-light p-3 xl:space-y-2">
+          <div className="absolute left-0 bottom-[1%] flex w-full flex-col items-center justify-center space-y-2 border-t border-light p-3 sm:bottom-0 xl:space-y-2">
             <ChatButton
               icon={
                 theme === "dark" ? (

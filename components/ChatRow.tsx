@@ -35,7 +35,7 @@ const ChatRow = ({ id }: Props) => {
   return (
     <Link href={`/chat/${id}`} className={`chatRow ${active && "active"}`}>
       <BiMessage className="text-[21px] text-grey-100" />
-      <p className="hidden flex-1 truncate text-base font-medium text-grey-100 md:inline-flex">
+      <p className="inline-flex flex-1 truncate text-base font-medium text-grey-100">
         {messages?.docs[messages?.docs.length - 1]?.data().text || "New Chat"}
       </p>
       <button
