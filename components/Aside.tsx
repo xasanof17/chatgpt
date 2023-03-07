@@ -6,6 +6,17 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 import openai from "../assets/openai-icon.svg";
+import { useRouter } from "next/navigation";
+import {
+  addDoc,
+  collection,
+  orderBy,
+  query,
+  serverTimestamp,
+} from "firebase/firestore";
+import { db } from "../firebase";
+import { useCollection } from "react-firebase-hooks/firestore";
+import ChatRow from "./ChatRow";
 
 interface ChatButton {
   title: string;
@@ -24,7 +35,8 @@ const ChatButton = ({ title, icon, onClick }: ChatButton) => {
 
 const Aside = () => {
   const [show, setShow] = useState(false);
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
+  const router = useRouter();
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -36,6 +48,26 @@ const Aside = () => {
   const switchTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+
+  const createChat = async () => {
+    const doc = await addDoc(
+      collection(db, "users", session?.user?.email!, "chats"),
+      {
+        messages: [],
+        userId: session?.user?.email,
+        createdAt: serverTimestamp(),
+      }
+    );
+    router.push(`/chat/${doc.id}`);
+  };
+
+  const [chats, loading, error] = useCollection(
+    session &&
+      query(
+        collection(db, "users", session?.user?.email!, "chats"),
+        orderBy("createdAt", "desc")
+      )
+  );
 
   return (
     <div className="aside">
@@ -73,10 +105,20 @@ const Aside = () => {
               show ? "absolute" : "relative"
             } top-0 left-0 w-full p-3`}
           >
-            <button className="flex w-full items-center space-x-3 rounded-lg border-2 border-light p-2 text-left text-base font-normal capitalize text-grey-100 outline-none transition-all ease-out hover:border-blue hover:bg-slate-800 focus:border-blue focus:bg-slate-800 lg:text-lg">
+            <button
+              onClick={createChat}
+              className="flex w-full items-center space-x-3 rounded-lg border-2 border-light p-2 text-left text-base font-normal capitalize text-grey-100 outline-none transition-all ease-out hover:border-blue hover:bg-slate-800 focus:border-blue focus:bg-slate-800 lg:text-lg"
+            >
               <IoMdAdd fontSize={18} color="#dbdbe2" />
               <span>New Chat</span>
             </button>
+            <div className="mt-2 flex flex-col space-y-3 overflow-hidden">
+              <div className="overflow-y-scroll">
+                {chats?.docs.map((chat) => (
+                  <ChatRow key={chat.id} id={chat.id} />
+                ))}
+              </div>
+            </div>
           </div>
           <div className="absolute left-0 bottom-0 flex w-full flex-col items-center justify-center space-y-2 border-t border-light p-3 xl:space-y-2">
             <ChatButton

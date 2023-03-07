@@ -1,10 +1,10 @@
-import {Aside, Chat} from "../components";
+import Layout from "components/Layout";
+import { Chat } from "../components";
 
 export default function Home() {
   return (
-    <main className="flex">
-      <Aside />
+    <Layout>
       <Chat />
-    </main>
+    </Layout>
   );
 }

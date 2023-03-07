@@ -16,7 +16,7 @@ const Login = () => {
       />
       <button
         onClick={() => signIn("google")}
-        className="flex animate-pulse items-center space-x-4 rounded-xl bg-slate-100 py-2 px-3 text-lg font-medium text-dark-100"
+        className="flex animate-bounce items-center space-x-4 rounded-xl bg-slate-100 py-2 px-3 text-lg font-medium text-dark-100"
       >
         <Image src={google} alt="google" width={25} height={25} />
         <p>Login with Google</p>
