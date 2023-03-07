@@ -31,7 +31,7 @@ const Send = ({ chatId }: Props) => {
         _id: session?.user?.email!,
         name: session?.user?.name!,
         avatar:
-          session?.user?.image ||
+          session?.user?.image! ||
           `https://ui-avatars.com/api/?name=${session?.user?.name}`,
       },
     };
@@ -80,7 +80,7 @@ const Send = ({ chatId }: Props) => {
           placeholder="Type your message..."
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          className="block w-full resize-none rounded-md border-2 border-transparent border-slate-700 bg-grey-100 p-2 text-base text-grey-200 shadow-xl shadow-slate-300 outline-none focus:border-blue focus:bg-slate-200/60 focus:text-dark-100 disabled:cursor-not-allowed disabled:text-gray-300 dark:bg-dark-100 dark:text-grey-100 dark:shadow-slate-800 dark:focus:border-blue dark:focus:bg-light dark:focus:ring-blue lg:text-lg"
+          className="block w-full resize-none rounded-md border-2 border-transparent border-slate-700 bg-slate-200 p-2 text-base text-grey-200 shadow-xl shadow-slate-300 outline-none focus:border-blue focus:bg-slate-200/60 focus:text-dark-100 disabled:cursor-not-allowed disabled:text-gray-300 dark:bg-dark-100 dark:text-grey-100 dark:shadow-slate-800 dark:focus:border-blue dark:focus:bg-light dark:focus:ring-blue lg:text-lg"
           autoFocus
           disabled={!session}
           required
@@ -88,7 +88,7 @@ const Send = ({ chatId }: Props) => {
         <button
           disabled={!prompt || !session}
           type="submit"
-          className="flex cursor-pointer items-center justify-center rounded-full p-1 outline-none hover:bg-slate-200 focus:border focus:border-light focus:bg-slate-800 disabled:cursor-not-allowed dark:hover:bg-slate-800 lg:p-3"
+          className="flex cursor-pointer items-center justify-center rounded-full p-1 outline-none hover:bg-slate-200 focus:border focus:border-slate-400 dark:focus:border-light focus:bg-slate-100 dark:focus:bg-slate-800 disabled:cursor-not-allowed dark:hover:bg-slate-800 lg:p-3"
         >
           <IoSend fontSize={22} className="text-blue" />
         </button>

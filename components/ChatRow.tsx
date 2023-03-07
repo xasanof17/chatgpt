@@ -27,7 +27,7 @@ const ChatRow = ({ id }: Props) => {
     setActive(pathname.includes(id));
   }, []);
 
-  const removeChat = async () => {
+  const removeChat = async (id: string) => {
     await deleteDoc(doc(db, "users", session?.user?.email!, "chats", id));
     router.replace("/");
   };
@@ -38,7 +38,10 @@ const ChatRow = ({ id }: Props) => {
       <p className="hidden flex-1 truncate text-base font-medium text-grey-100 md:inline-flex">
         {messages?.docs[messages?.docs.length - 1]?.data().text || "New Chat"}
       </p>
-      <button onClick={removeChat} className="justify-enter flex items-center">
+      <button
+        onClick={() => removeChat(id)}
+        className="justify-enter flex items-center"
+      >
         <BiTrash className="text-[21px] text-grey-100 transition-all hover:text-red-600" />
       </button>
     </Link>

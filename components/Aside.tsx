@@ -136,7 +136,7 @@ const Aside = () => {
             {session && (
               <button onClick={() => signOut()} className="sideBarButton p-1">
                 <Image
-                  src={session?.user?.image || openai}
+                  src={session?.user?.image || (openai as string)}
                   alt="user"
                   width={30}
                   height={30}

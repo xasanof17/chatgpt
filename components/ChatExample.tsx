@@ -41,7 +41,7 @@ const Box = ({ item, id }: Box) => {
   return (
     <div
       key={id}
-      className="w-full rounded-lg bg-dark-200 p-2 hover:cursor-pointer dark:bg-dark-100"
+      className="w-full rounded-lg bg-slate-200 p-2 hover:cursor-pointer dark:bg-dark-100"
     >
       <p className="text-center text-base font-medium text-grey-200 dark:text-grey-100 xl:text-lg">
         {item.text}
